@@ -33,18 +33,18 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to=''
+                                to='/about'
                                 className={({ isActive }) => (isActive ? 'active' : 'default')}
                             >
-                                Books
+                                About
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to=''
+                                to='/service'
                                 className={({ isActive }) => (isActive ? 'active' : 'default')}
                             >
-                                About us
+                                Service
                             </NavLink>
                         </li>
                     </ul>
@@ -92,18 +92,18 @@ const Navbar = () => {
                                             </li>
                                             <li>
                                                 <Link
-                                                    to=''
+                                                    to='/about'
                                                     className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                                                 >
-                                                    Books
+                                                    About
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link
-                                                    to=''
+                                                    to='/service'
                                                     className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                                                 >
-                                                    About Us
+                                                    Service
                                                 </Link>
                                             </li>
                                         </ul>
