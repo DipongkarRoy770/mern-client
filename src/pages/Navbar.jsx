@@ -47,6 +47,14 @@ const Navbar = () => {
                                 Service
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to='/login'
+                                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                            >
+                               Login
+                            </NavLink>
+                        </li>
                     </ul>
                     {/* Mobile Navbar Section */}
                     <div className='lg:hidden'>
@@ -104,6 +112,14 @@ const Navbar = () => {
                                                     className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                                                 >
                                                     Service
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to='/login'
+                                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
+                                                >
+                                                    Login
                                                 </Link>
                                             </li>
                                         </ul>
