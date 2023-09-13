@@ -1,14 +1,26 @@
 import { Link } from 'react-router-dom';
 import img from '../assets/images/login/login.svg'
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
-
+    const { signInUser } = useContext(AuthContext)
     const handleLogin = (event) => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        
+        signInUser(email, password)
+            .then(result => {
+                const newuser = result.user;
+                console.log(newuser)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
 
     return (
@@ -19,7 +31,7 @@ const Login = () => {
                 <div className="card bg-base-300 w-1/2">
                     <form onSubmit={handleLogin} className="card-body">
                         <h2 className='text-3xl font-semibold text-center'>Login</h2>
-                        
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
