@@ -6,6 +6,9 @@ import About from "../components/About";
 import Service from "../components/Service";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import CheekOut from "../components/CheekOut";
+import Booking from "../components/Booking";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -17,21 +20,30 @@ export const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
-                path: 'about',
+                path: '/about',
                 element: <About></About>
             },
             {
-                path: 'service',
+                path: '/service',
                 element: <Service></Service>,
             },
             {
-                path: 'login',
+                path: '/login',
                 element: <Login></Login>
             },
             {
-                path: 'signup',
+                path: '/signup',
                 element: <Register></Register>
             },
+            {
+                path: "/cheekout/:id",
+                element: <CheekOut></CheekOut>,
+                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+            },
+            {
+                path:'/booking',
+                element:<PrivateRoute><Booking></Booking></PrivateRoute>
+            }
         ]
     },
 ]);

@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 
 
 const ServiceCart = ({ cart }) => {
-    const { title, img, price } = cart;
+    const { _id, title, img, price } = cart;
+    //console.log(_id)
 
     return (
         <div className="card w-96 bg-indigo-100 ">
@@ -12,7 +14,9 @@ const ServiceCart = ({ cart }) => {
                 <h2 className="card-title">{title}</h2>
                 <p>{price}</p>
                 <div className="card-actions">
-                    <button className="btn btn-error">Buy Now</button>
+                    <Link to={`/cheekout/${_id}`}>
+                        <button className="btn btn-error">Book Now</button>
+                    </Link>
                 </div>
             </div>
         </div>
