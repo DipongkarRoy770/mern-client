@@ -1,8 +1,8 @@
 
 
 
-const TableData = ({ books,handleDelete}) => {
-    const { _id, title, price, customerName, img, date } = books;
+const TableData = ({ books, handleDelete, handleBookingConfrom }) => {
+    const { _id, title, price, customerName, img, date, status } = books;
     //console.log(books)
     return (
         <tbody>
@@ -24,7 +24,8 @@ const TableData = ({ books,handleDelete}) => {
                 <td>{price}</td>
                 <td>{date}</td>
                 <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
+                    {
+                        status === 'confirm' ? <span className="text-red-500 font-semibold"> Confirmed</span> : <button onClick={() => handleBookingConfrom(_id)} className="btn btn-ghost btn-xs">pleace Confrom</button>}
                 </th>
             </tr>
         </tbody>

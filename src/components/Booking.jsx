@@ -13,7 +13,7 @@ const Booking = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setBookings(data))
-    }, [])
+    }, [url])
 
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/booking/${id}`, {
@@ -32,10 +32,27 @@ const Booking = () => {
                     setBookings(remaining)
                 }
             })
-       
 
-
-
+    }
+    const handleBookingConfrom = (id) => {
+        fetch(`http://localhost:5000/booking/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status:'confirm'})
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    const remaining = bookings.filter(booking => booking._id !== id)
+                    const update = bookings.find(booking => booking._id === id)
+                    update.status = "confirm"
+                    const nowBooking = [update, ...remaining]
+                    setBookings(nowBooking)
+                }
+            })
     }
     return (
         <div>
@@ -53,7 +70,7 @@ const Booking = () => {
                         <th>name</th>
                         <th>price</th>
                         <th>Date</th>
-                        <th>Statas</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 {
@@ -61,6 +78,7 @@ const Booking = () => {
                         key={books._id}
                         books={books}
                         handleDelete={handleDelete}
+                        handleBookingConfrom={handleBookingConfrom}
                     ></TableData>)
                 }
 
