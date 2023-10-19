@@ -37,8 +37,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/cheekout/:id",
-                element: <CheekOut></CheekOut>,
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+                element: <PrivateRoute><CheekOut></CheekOut></PrivateRoute>,
+                loader: ({params}) => fetch(`https://mern-server-qaucfs3ij-dipongkarroy233-gmailcom.vercel.app/services/${params.id}`)
             },
             {
                 path:'/booking',

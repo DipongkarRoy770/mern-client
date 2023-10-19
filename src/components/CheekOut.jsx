@@ -28,7 +28,7 @@ const CheekOut = () => {
             service_id: _id,
         }
         //console.log(booking)
-        fetch('http://localhost:5000/booking', {
+        fetch('https://mern-server-qaucfs3ij-dipongkarroy233-gmailcom.vercel.app/booking', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

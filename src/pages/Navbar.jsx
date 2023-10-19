@@ -19,7 +19,7 @@ const Navbar = () => {
             .catch(console.error())
     }
     return (
-        <div className='bg-gray-100 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-6'>
+        <div className='bg-gray-100 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full'>
             <div className='relative flex items-center justify-between'>
                 {/* Logo Section */}
                 {/* <Link to='/' className='inline-flex items-center'>
@@ -28,7 +28,10 @@ const Navbar = () => {
                             nextPage
                         </span>
                     </Link> */}
+                <span className="flex items-center">
                 <img className="w-24 h-16" src={logo} alt="" />
+                <h2 className="mr-3 text-3xl font-semibold">Car House</h2>
+                </span>
 
                 {/* Nav Items Section */}
                 <ul className='items-center hidden space-x-8 lg:flex'>
@@ -66,6 +69,12 @@ const Navbar = () => {
                                     Booking
                                 </NavLink>
                             </li>
+                            <span>{user?.email}</span>
+                            <div className="avatar">
+  <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+    <img src={user?.photoURL} />
+  </div>
+</div>
                             <button onClick={handleLogOut} className="btn btn-outline">Logout</button>
 
                         </> : <li>
@@ -136,7 +145,7 @@ const Navbar = () => {
                                                 Service
                                             </Link>
                                         </li>
-                                        {
+                                         {
                                             user?.email ? <>
                                                 <li>
                                                     <NavLink
@@ -146,6 +155,12 @@ const Navbar = () => {
                                                         Booking
                                                     </NavLink>
                                                 </li>
+                                                <span>{user.email}</span>
+                                                <div className="avatar">
+                                                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                  <img src={user?.photoURL} />
+                                                  </div>
+                                                </div>
                                                 <button onClick={handleLogOut} className="btn btn-outline">Log out</button></> : <li>
                                                 <Link
                                                     to='/login'
@@ -154,7 +169,8 @@ const Navbar = () => {
                                                     Login
                                                 </Link>
                                             </li>
-                                        }
+                                        } 
+                                        
                                     </ul>
                                 </nav>
                             </div>
@@ -164,10 +180,17 @@ const Navbar = () => {
             </div>
         </div>
     )
-    // }
 
-    // export default Header
-    // );
 };
 
 export default Navbar;
+
+// {
+//     user ? <>
+        
+//         <a onClick={handleLogOut} className="btn btn-sm">Sign out</a>
+//     </> 
+//     : <Link to="/login">
+//         <button className="btn btn-sm">Login</button>
+//     </Link>
+// }

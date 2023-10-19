@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Booking = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
-    const url = `http://localhost:5000/booking?email=${user?.email}`
+    const url = `https://mern-server-qaucfs3ij-dipongkarroy233-gmailcom.vercel.app/booking?email=${user?.email}`
 
     useEffect(() => {
         fetch(url)
@@ -16,7 +16,7 @@ const Booking = () => {
     }, [url])
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`https://mern-server-qaucfs3ij-dipongkarroy233-gmailcom.vercel.app/booking/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -25,7 +25,7 @@ const Booking = () => {
                 if (data.deletedCount > 0) {
                     Swal.fire(
                         'Deleted!',
-                        'Your file has been deleted.',
+                        'service data is deleted',
                         'success'
                     )
                     const remaining = bookings.filter(data => data._id !== id)
@@ -35,12 +35,12 @@ const Booking = () => {
 
     }
     const handleBookingConfrom = (id) => {
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`https://mern-server-qaucfs3ij-dipongkarroy233-gmailcom.vercel.app/booking/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({status:'confirm'})
+            body: JSON.stringify({ status: 'confirm' })
         })
             .then(res => res.json())
             .then(data => {

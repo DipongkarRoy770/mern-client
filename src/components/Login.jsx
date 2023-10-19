@@ -1,26 +1,40 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
-    const { signInUser } = useContext(AuthContext)
+    const { signInUser ,signInWithGoogle} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    let from = location.state?.from?.pathname || '/'
     const handleLogin = (event) => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        
+
         signInUser(email, password)
             .then(result => {
                 const newuser = result.user;
                 console.log(newuser)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error)
             })
 
+    }
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     return (
@@ -49,6 +63,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='my-4'>have a new accound <Link className='text-orange-500 font-bold' to='/signup'>Sign Up</Link></p>
+                    <button className='btn ' onClick={handleGoogleSignIn}>google</button>
                 </div>
             </div>
         </div>
